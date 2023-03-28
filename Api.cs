@@ -5,7 +5,7 @@ namespace Api
 	public class Api<TAuthentication> where TAuthentication : IAuthenticator
 	{
 		/** Base URL */
-		private readonly Uri _baseUrl;
+		internal readonly Uri BaseUrl;
 		/** Endpoints */
 		public readonly List<Endpoint> Endpoints;
 		/** Authentication */
@@ -13,7 +13,7 @@ namespace Api
 
 		public Api(Uri baseUrl, List<Endpoint> endpoints)
 		{
-			_baseUrl = baseUrl;
+			BaseUrl = baseUrl;
 			Endpoints = endpoints;
 			this.Authentication = typeof(TAuthentication);
 		}
