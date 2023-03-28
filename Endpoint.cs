@@ -12,7 +12,6 @@
         public Endpoint(Uri? path, HttpMethod method, Dictionary<string, Parameter<Type>>? parameters)
         {
             Path = path ?? Path;
-            Method = method ?? throw new ArgumentNullException(nameof(method));
             Method = method;
             Parameters = parameters;
         }
