@@ -19,10 +19,22 @@
 		{
 			Validate(arguments);
 		}
+		/** <summary>
+		 * Validates arguments against parameters based on the following rules in order: <br/>
+		 * <list type="number">
+		 * <item>Argument names must be unique</item>
+		 * <item>Argument names must match parameter names</item>
+		 * <item>Argument types must match parameter types</item>
+		 * <item>Required parameters must be satisfied</item>
+		 * </list>
+		 * </summary>
+		 * <param name="subjects"> Arguments to validate </param>
+		 * <exception cref = "ArgumentException" />
+		 */
 		private void Validate(Dictionary<string, object>? subjects)
 		{
 			if (subjects == null || Parameters == null) return;
-			/** Unique parameter names */
+			/** <summary> Unique Parameter Names </summary> */
 			HashSet<string> uniqueParams = new(Parameters.Keys);
 			/** Unique argument names */
 			HashSet<string> uniqueArgs = new(subjects.Keys);
