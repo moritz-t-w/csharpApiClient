@@ -1,5 +1,8 @@
 ﻿namespace Api
 {
+	/** <summary> Endpoint of an Api </summary>
+	 * <typeparam name="Result"> Type of the result that the endpoint returns </typeparam>
+	 */
 	public class Endpoint<Result>
 	{
 		/** Path to the endpoint */
