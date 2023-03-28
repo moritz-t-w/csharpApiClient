@@ -8,5 +8,12 @@
         public readonly HttpMethod Method;
         /** Request Parameters */
         public readonly Dictionary<string, Parameter<Type>>? Parameters;
+
+        public Endpoint(Uri? path, HttpMethod method, Dictionary<string, Parameter<Type>>? parameters)
+        {
+            Path = path ?? Path;
+            Method = method ?? throw new ArgumentNullException(nameof(method));
+            Parameters = parameters;
+        }
     }
 }
