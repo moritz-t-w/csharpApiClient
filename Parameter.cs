@@ -4,6 +4,5 @@ namespace Api
 	{
 		public bool Required = false;
 		public T? DefaultValue;
-		public Uri? Documentation;
 	}
 }
