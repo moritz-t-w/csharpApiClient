@@ -41,6 +41,17 @@
 				int n = uniqueArgs.Count;
 				throw new ArgumentException($"{n} Extra argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", uniqueArgs)}");
 			}
+			// Argument types must match parameter types
+			foreach (KeyValuePair<string, object> argument in arguments)
+			{
+				if (Parameters.TryGetValue(argument.Key, out Parameter<Type> parameter))
+				{
+					if (argument.Value.GetType() != parameter.Type)
+					{
+						throw new ArgumentException($"Argument '{argument.Key}' must be of type {parameter.Type.Name}");
+					}
+				}
+			}
 			// Required parameters must be satisfied
 			if (uniqueParams.Count > arguments.Count)
 			{
