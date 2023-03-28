@@ -33,7 +33,7 @@
 		 * <param name="subjects"> Arguments to validate </param>
 		 * <exception cref = "ArgumentException" />
 		 */
-		private void Validate(Dictionary<string, object>? subjects)
+		private void Validate(Dictionary<string, object> subjects)
 		{
 			/** <summary> Unique Parameter Names </summary> */
 			HashSet<string> uniqueParams = new(Parameters.Keys);
