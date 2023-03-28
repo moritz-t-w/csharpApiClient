@@ -3,7 +3,7 @@
     public class Endpoint
     {
         /** Path to the endpoint */
-        public readonly Uri Path;
+        public readonly Uri Path = new("/");
         /** HTTP method */
         public readonly HttpMethod Method;
         /** Request Parameters */
