@@ -34,6 +34,12 @@
 				int n = argumentNames.Count;
 				throw new ArgumentException($"{n} Duplicate argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", argumentNames)}");
 			}
+			// Argument names must match parameter names
+			if (arguments.Count > parameterNames.Count)
+			{
+				argumentNames.ExceptWith(parameterNames);
+				int n = argumentNames.Count;
+				throw new ArgumentException($"{n} Extra argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", argumentNames)}");
 			}
 			// Required parameters must be satisfied
 			if (parameterNames.Count > arguments.Count)
