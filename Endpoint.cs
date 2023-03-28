@@ -30,9 +30,6 @@
 			// if there are duplicate args, throw an error with the duplicate names
 			if (argumentNames.Count > arguments.Count)
 			{
-				HashSet<string> duplicateNames = new(argumentNames); duplicateNames.ExceptWith(parameterNames);
-				int n = duplicateNames.Count;
-				throw new ArgumentException($"{n} Duplicate argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", duplicateNames)}");
 				argumentNames.ExceptWith(parameterNames);
 				int n = argumentNames.Count;
 				throw new ArgumentException($"{n} Duplicate argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", argumentNames)}");
