@@ -22,7 +22,7 @@
 
 		}
 		/** <summary>
-		 * Validates arguments against parameters based on the following rules in order: <br/>
+		 * Validate arguments against parameters based on the following rules in order: <br/>
 		 * <list type="number">
 		 * <item>Argument names must be unique</item>
 		 * <item>Argument names must match parameter names</item>
