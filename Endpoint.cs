@@ -44,12 +44,11 @@
 			// Argument types must match parameter types
 			foreach (KeyValuePair<string, object> argument in arguments)
 			{
-				if (Parameters.TryGetValue(argument.Key, out Parameter<Type> parameter))
+				//at this point, we know that the argument name is a valid parameter name
+				Parameter<Type> parameter = Parameters[argument.Key];
+				if (!parameter.Type.IsAssignableFrom(argument.Value.GetType()))
 				{
-					if (argument.Value.GetType() != parameter.Type)
-					{
-						throw new ArgumentException($"Argument '{argument.Key}' must be of type {parameter.Type.Name}");
-					}
+					throw new ArgumentException($"Argument '{argument.Key}' must be assignable to '{parameter.Type.Name}', '{argument.Value.GetType().Name}' given");
 				}
 			}
 			// Required parameters must be satisfied
