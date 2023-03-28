@@ -12,3 +12,4 @@
             _authenticator = authenticator ?? throw new ArgumentNullException(nameof(authenticator));
         }
     }
+}
