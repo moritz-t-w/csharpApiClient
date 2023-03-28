@@ -38,9 +38,12 @@
 			// if required parameters are missing, throw an error with the missing names
 			if (parameterNames.Count > arguments.Count)
 			{
-				parameterNames.ExceptWith(argumentNames);
-				int n = parameterNames.Count;
-				throw new ArgumentException($"{n} Missing required argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", parameterNames)}");
+				HashSet<string> missingNames = new(parameterNames); missingNames.ExceptWith(argumentNames);
+				int n = missingNames.Count;
+				if (n > 0)
+				{
+					throw new ArgumentException($"{n} Missing required argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", missingNames)}");
+				}
 			}
 		}
 	}
