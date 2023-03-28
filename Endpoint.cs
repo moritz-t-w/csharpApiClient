@@ -18,7 +18,7 @@
 		public Task<Result> Request(HttpClient httpClient, Dictionary<string, object>? arguments)
 		{
 
-			if (arguments != null) Validate(arguments);
+			if (arguments != null) { Validate(arguments); Prune(arguments); }
 
 		}
 		/** <summary>
@@ -72,6 +72,21 @@
 				if (n > 0)
 				{
 					throw new ArgumentException($"{n} Missing required argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", missing)}");
+				}
+			}
+		}
+		/** <summary>
+		 * Remove all arguments that are equal to the default value of their respective parameter.
+		 * </summary>
+		 * <param name="subjects"> Arguments to prune </param>
+		 */
+		private void Prune(Dictionary<string, object> subjects)
+		{
+			foreach (KeyValuePair<string, Parameter<Type>> parameter in Parameters)
+			{
+				if (subjects[parameter.Key].Equals(parameter.Value.DefaultValue))
+				{
+					subjects.Remove(parameter.Key);
 				}
 			}
 		}
