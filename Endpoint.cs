@@ -16,6 +16,13 @@
 			Parameters = parameters;
 		}
 
+		/** <summary> Validate and prune arguments </summary> */
+		public Dictionary<string, object>? Prepare(Dictionary<string, object>? subjects)
+		{
+			if (subjects != null && subjects.Count > 0) { Validate(subjects); Prune(subjects); }
+			return subjects;
+		}
+
 		/** <summary>
 		 * Validate arguments against parameters based on the following rules in order: <br/>
 		 * <list type="number">
