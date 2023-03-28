@@ -13,6 +13,7 @@
         {
             Path = path ?? Path;
             Method = method ?? throw new ArgumentNullException(nameof(method));
+            Method = method;
             Parameters = parameters;
         }
         public Task<Result> Request(HttpClient httpClient, Dictionary<string, object> arguments)

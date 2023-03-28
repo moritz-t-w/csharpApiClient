@@ -13,8 +13,8 @@ namespace Api
 
         public Api(Uri baseUrl, List<Endpoint> endpoints)
         {
-            _baseUrl = baseUrl ?? throw new ArgumentNullException(nameof(baseUrl));
-            Endpoints = endpoints ?? throw new ArgumentNullException(nameof(endpoints));
+            _baseUrl = baseUrl;
+            Endpoints = endpoints;
             this.Authentication = typeof(TAuthentication);
         }
     }
