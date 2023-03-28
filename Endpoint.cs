@@ -27,7 +27,7 @@
 			/** Unique argument names */
 			HashSet<string> argumentNames = new(arguments.Keys);
 
-			// if there are duplicate args, throw an error with the duplicate names
+			// Arguments must be unique
 			if (argumentNames.Count > arguments.Count)
 			{
 				argumentNames.ExceptWith(parameterNames);
@@ -35,7 +35,7 @@
 				throw new ArgumentException($"{n} Duplicate argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", argumentNames)}");
 			}
 			}
-			// if required parameters are missing, throw an error with the missing names
+			// Required parameters must be satisfied
 			if (parameterNames.Count > arguments.Count)
 			{
 				HashSet<string> missingNames = new(parameterNames); missingNames.ExceptWith(argumentNames);
