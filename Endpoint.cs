@@ -19,30 +19,30 @@
 		{
 			Validate(arguments);
 		}
-		private void Validate(Dictionary<string, object>? arguments)
+		private void Validate(Dictionary<string, object>? subjects)
 		{
-			if (arguments == null || Parameters == null) return;
+			if (subjects == null || Parameters == null) return;
 			/** Unique parameter names */
 			HashSet<string> uniqueParams = new(Parameters.Keys);
 			/** Unique argument names */
-			HashSet<string> uniqueArgs = new(arguments.Keys);
+			HashSet<string> uniqueArgs = new(subjects.Keys);
 
 			// Arguments must be unique
-			if (uniqueArgs.Count > arguments.Count)
+			if (uniqueArgs.Count > subjects.Count)
 			{
 				uniqueArgs.ExceptWith(uniqueParams);
 				int n = uniqueArgs.Count;
 				throw new ArgumentException($"{n} Duplicate argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", uniqueArgs)}");
 			}
 			// Argument names must match parameter names
-			if (arguments.Count > uniqueParams.Count)
+			if (subjects.Count > uniqueParams.Count)
 			{
 				uniqueArgs.ExceptWith(uniqueParams);
 				int n = uniqueArgs.Count;
 				throw new ArgumentException($"{n} Extra argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", uniqueArgs)}");
 			}
 			// Argument types must match parameter types
-			foreach (KeyValuePair<string, object> argument in arguments)
+			foreach (KeyValuePair<string, object> argument in subjects)
 			{
 				//at this point, we know that the argument name is a valid parameter name
 				Parameter<Type> parameter = Parameters[argument.Key];
@@ -52,7 +52,7 @@
 				}
 			}
 			// Required parameters must be satisfied
-			if (uniqueParams.Count > arguments.Count)
+			if (uniqueParams.Count > subjects.Count)
 			{
 				HashSet<string> missing = new(uniqueParams); missing.ExceptWith(uniqueArgs);
 				int n = missing.Count;
