@@ -17,9 +17,9 @@
 		}
 		public Task<Result> Request(HttpClient httpClient, Dictionary<string, object>? arguments)
 		{
-			ValidateArguments(arguments);
+			Validate(arguments);
 		}
-		private void ValidateArguments(Dictionary<string, object>? arguments)
+		private void Validate(Dictionary<string, object>? arguments)
 		{
 			if (arguments == null || Parameters == null) return;
 			/** Unique parameter names */
