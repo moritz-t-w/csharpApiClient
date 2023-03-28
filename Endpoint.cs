@@ -76,7 +76,7 @@
 			}
 		}
 		/** <summary>
-		 * Remove all arguments that are equal to the default value of their respective parameter.
+		 * Remove all arguments that are equal to the default value of their respective parameter
 		 * </summary>
 		 * <param name="subjects"> Arguments to prune </param>
 		 */
