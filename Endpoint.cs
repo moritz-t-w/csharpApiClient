@@ -75,6 +75,7 @@
 				}
 			}
 		}
+
 		/** <summary>
 		 * Remove all arguments that are equal to the default value of their respective parameter
 		 * </summary>
