@@ -2,6 +2,6 @@
 {
 	public interface IAuthenticator
 	{
-		public void Authenticate(HttpClient client);
+		public void Authenticate(HttpRequestMessage request);
 	}
 }
