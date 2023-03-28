@@ -1,7 +1,7 @@
 ﻿namespace Api
 {
-    public interface IAuthenticator
-    {
-        public void Authenticate(HttpClient client);
-    }
+	public interface IAuthenticator
+	{
+		public void Authenticate(HttpClient client);
+	}
 }
