@@ -23,32 +23,32 @@
 		{
 			if (arguments == null || Parameters == null) return;
 			/** Unique parameter names */
-			HashSet<string> parameterNames = new(Parameters.Keys);
+			HashSet<string> uniqueParams = new(Parameters.Keys);
 			/** Unique argument names */
-			HashSet<string> argumentNames = new(arguments.Keys);
+			HashSet<string> uniqueArgs = new(arguments.Keys);
 
 			// Arguments must be unique
-			if (argumentNames.Count > arguments.Count)
+			if (uniqueArgs.Count > arguments.Count)
 			{
-				argumentNames.ExceptWith(parameterNames);
-				int n = argumentNames.Count;
-				throw new ArgumentException($"{n} Duplicate argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", argumentNames)}");
+				uniqueArgs.ExceptWith(uniqueParams);
+				int n = uniqueArgs.Count;
+				throw new ArgumentException($"{n} Duplicate argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", uniqueArgs)}");
 			}
 			// Argument names must match parameter names
-			if (arguments.Count > parameterNames.Count)
+			if (arguments.Count > uniqueParams.Count)
 			{
-				argumentNames.ExceptWith(parameterNames);
-				int n = argumentNames.Count;
-				throw new ArgumentException($"{n} Extra argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", argumentNames)}");
+				uniqueArgs.ExceptWith(uniqueParams);
+				int n = uniqueArgs.Count;
+				throw new ArgumentException($"{n} Extra argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", uniqueArgs)}");
 			}
 			// Required parameters must be satisfied
-			if (parameterNames.Count > arguments.Count)
+			if (uniqueParams.Count > arguments.Count)
 			{
-				HashSet<string> missingNames = new(parameterNames); missingNames.ExceptWith(argumentNames);
-				int n = missingNames.Count;
+				HashSet<string> missing = new(uniqueParams); missing.ExceptWith(uniqueArgs);
+				int n = missing.Count;
 				if (n > 0)
 				{
-					throw new ArgumentException($"{n} Missing required argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", missingNames)}");
+					throw new ArgumentException($"{n} Missing required argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", missing)}");
 				}
 			}
 		}
