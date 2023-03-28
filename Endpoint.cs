@@ -16,7 +16,11 @@
 			Parameters = parameters;
 		}
 
-		/** <summary> Validate and prune arguments </summary> */
+		/** <summary> Validate and prune arguments </summary>
+		 * <param name="subjects"> Arguments to prepare </param>
+		 * <returns> The <paramref name="subjects"/> in immaculate condition </returns>
+		 * <exception cref = "ArgumentException" />
+		 */
 		public Dictionary<string, object>? Prepare(Dictionary<string, object>? subjects)
 		{
 			if (subjects != null && subjects.Count > 0) { Validate(subjects); Prune(subjects); }
