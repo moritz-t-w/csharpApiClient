@@ -7,6 +7,6 @@
         /** HTTP method */
         public readonly HttpMethod Method;
         /** Request Parameters */
-        public readonly Dictionary<string, Parameter<Type>> Parameters;
+        public readonly Dictionary<string, Parameter<Type>>? Parameters;
     }
 }
