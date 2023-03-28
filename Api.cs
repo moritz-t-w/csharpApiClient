@@ -2,20 +2,20 @@
 
 namespace Api
 {
-	public class Api<TAuthentication> where TAuthentication : IAuthenticator
+	public class Api
 	{
 		/** Base URL */
 		internal readonly Uri BaseUrl;
 		/** Endpoints */
 		public readonly List<Endpoint> Endpoints;
-		/** Authentication */
-		public readonly Type Authentication;
+		/** Authentication Methods */
+		public readonly List<Type> AuthenticationMethods;
 
-		public Api(Uri baseUrl, List<Endpoint> endpoints)
+		public Api(Uri baseUrl, List<Endpoint> endpoints, List<Type> authenticationMethods)
 		{
 			BaseUrl = baseUrl;
 			Endpoints = endpoints;
-			this.Authentication = typeof(TAuthentication);
+			AuthenticationMethods = authenticationMethods;
 		}
 	}
 }

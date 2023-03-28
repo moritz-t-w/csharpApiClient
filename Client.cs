@@ -2,11 +2,11 @@
 {
 	public class Client<AuthenticationType> where AuthenticationType : IAuthenticator, new()
 	{
-		private readonly Api<AuthenticationType> _api;
+		private readonly Api _api;
 		private readonly HttpClient _client = new();
 		private readonly AuthenticationType _authenticator = new();
 
-		public Client(Api<AuthenticationType> Subject, HttpClient? client = null)
+		public Client(Api Subject, HttpClient? client = null)
 		{
 			_api = Subject;
 			_client = client ?? _client;
