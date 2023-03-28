@@ -1,5 +1,10 @@
 ﻿namespace Api
 {
+	/** <summary>
+    * Client for sending requests to an API
+    * </summary>
+    * <typeparam name="AuthenticationType">The type of authentication to use</typeparam>
+	 */
 	public class Client<AuthenticationType> where AuthenticationType : IAuthenticator, new()
 	{
 		private readonly Api _api;
