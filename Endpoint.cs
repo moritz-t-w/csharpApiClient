@@ -34,6 +34,13 @@
 				int n = duplicateNames.Count;
 				throw new ArgumentException($"{n} Duplicate argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", duplicateNames)}");
 			}
+			// if required parameters are missing, throw an error with the missing names
+			if (parameterNames.Count > arguments.Count)
+			{
+				HashSet<string> missingNames = new(parameterNames); missingNames.ExceptWith(argumentNames);
+				int n = missingNames.Count;
+				throw new ArgumentException($"{n} Missing required argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", missingNames)}");
+			}
 		}
 	}
 }
