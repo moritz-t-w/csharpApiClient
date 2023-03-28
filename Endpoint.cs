@@ -15,12 +15,7 @@
 			Method = method;
 			Parameters = parameters;
 		}
-		public Task<Result> Request(HttpClient httpClient, Dictionary<string, object>? arguments)
-		{
 
-			if (arguments != null) { Validate(arguments); Prune(arguments); }
-
-		}
 		/** <summary>
 		 * Validate arguments against parameters based on the following rules in order: <br/>
 		 * <list type="number">
