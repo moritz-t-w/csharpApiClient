@@ -4,8 +4,8 @@
 	{
 		private readonly Api<AuthenticationType> _api;
 		private readonly HttpClient _client = new();
-	}
-}
+		private readonly AuthenticationType _authenticator = new();
+
 		public Client(Api<AuthenticationType> Subject, HttpClient? client = null)
 		{
 			_api = Subject;
