@@ -4,7 +4,7 @@ namespace Api
 {
     public class Api
     {
-        /** Base URL with a parameter for the version */
+        /** Base URL */
         private readonly Uri _baseUrl;
         /** Endpoints */
         public readonly List<Endpoint> Endpoints;
