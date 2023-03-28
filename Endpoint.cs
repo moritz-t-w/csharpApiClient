@@ -1,6 +1,6 @@
 ﻿namespace Api
 {
-    internal class Endpoint
+    public class Endpoint
     {
         /** Path to the endpoint */
         public readonly Uri Path;
