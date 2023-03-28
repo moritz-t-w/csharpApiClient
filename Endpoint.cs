@@ -15,7 +15,7 @@
             Method = method ?? throw new ArgumentNullException(nameof(method));
             Parameters = parameters;
         }
-        public Task<Result> Request(HttpClient httpClient, Dictionary<string, object> arguments) { }
+        public Task<Result> Request(HttpClient httpClient, Dictionary<string, object> arguments)
         {
             
         }
