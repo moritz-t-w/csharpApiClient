@@ -10,12 +10,23 @@
 		/** HTTP method */
 		public readonly HttpMethod Method;
 		/** Request Parameters */
-		public readonly Dictionary<string, Parameter<Type>>? Parameters;
+		public readonly Dictionary<string, object>? Parameters;
 
-		public Endpoint(Uri? path, HttpMethod method, Dictionary<string, Parameter<Type>>? parameters)
+		public Endpoint(Uri? path, HttpMethod method, Dictionary<string, object>? parameters)
 		{
 			Path = path ?? Path;
 			Method = method;
+			if (parameters != null)
+			{
+				foreach (KeyValuePair<string, object> pair in parameters)
+				{
+					object param = pair.Value;
+					if (!param.GetType().IsGenericType || param.GetType().GetGenericTypeDefinition() != typeof(Parameter<>))
+					{
+						throw new ArgumentException($"Parameter '{pair.Key}' must be of type 'Parameter<>'");
+					}
+				}
+			}
 			Parameters = parameters;
 		}
 
