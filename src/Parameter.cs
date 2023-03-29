@@ -9,12 +9,17 @@ namespace Api
 		public readonly T? DefaultValue;
 		/** <summary> A public copy of <see cref="T"/> </summary> */
 		public readonly Type Type;
+		/** <summary> Validation logic </summary>
+		 * <exception cref = "ArgumentException" />
+		 */
+		public readonly Action<T> Validate = (T subject) => { };
 
-		public Parameter(bool required, T? defaultValue)
+		public Parameter(bool? required, T? defaultValue, Action<T>? validate)
 		{
-			Required = required;
+			Required = required ?? this.Required;
 			DefaultValue = defaultValue;
 			Type = typeof(T);
+			Validate = validate ?? this.Validate;
 		}
 	}
 }

@@ -37,6 +37,7 @@
 		 * <item>Argument names must match parameter names</item>
 		 * <item>Argument types must match parameter types</item>
 		 * <item>Required parameters must be satisfied</item>
+		 * <item>Arguments must pass individual parameter validation</item>
 		 * </list>
 		 * </summary>
 		 * <param name="subjects"> Arguments to validate </param>
@@ -82,6 +83,13 @@
 				{
 					throw new ArgumentException($"{n} Missing required argument{(n > 1 ? "s" : "")}:\n{string.Join(",\n", missing)}");
 				}
+			}
+			// Arguments must pass individual parameter validation
+			foreach (KeyValuePair<string, object> argument in subjects)
+			{
+				//at this point, we know that the argument type is assignable to the parameter type
+				Parameters[argument.Key]
+					.Validate((Type)argument.Value);
 			}
 		}
 
